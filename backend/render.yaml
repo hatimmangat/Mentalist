@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: mentalist-backend
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: ALLOWED_ORIGINS
+        value: "*"
+      - key: CHROMA_DIR
+        value: /app/chroma_store
+      - key: DATABASE_URL
+        value: sqlite:////app/data/mentalist.db
+    disk:
+      name: mentalist-data
+      mountPath: /app/data
+      sizeGB: 1

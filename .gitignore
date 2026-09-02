@@ -1,0 +1,23 @@
+# Environment / secrets — never commit real keys
+.env
+backend/.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+env/
+*.egg-info/
+
+# Local database
+backend/*.db
+backend/mentalist.db
+
+# Local vector store (rebuild via `python -m app.rag.ingest` instead of committing binary index files)
+backend/chroma_store/
+
+# OS / editor cruft
+.DS_Store
+.vscode/
+*.swp
